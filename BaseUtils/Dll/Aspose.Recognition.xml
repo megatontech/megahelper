@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>Aspose.Recognition</name>
+  </assembly>
+  <members>
+    <member name="T:Aspose.Recognition.RecognitionMode">
+      <summary>
+            Allows to control how a PDF document is converted into a word processing document.
+            </summary>
+      <remarks>
+        <para>Use the <see cref="F:Aspose.Recognition.RecognitionMode.Textbox" /> mode when the resulting document is not goining 
+            to be heavily edited futher. Textboxes are easy to modify when there is not a lot to do.</para>
+        <para>Use the <see cref="F:Aspose.Recognition.RecognitionMode.Flow" /> mode when the output document needs further editing. 
+            Paragraphs and texlines in the flow mode allow easy modification of text, but unupported
+            formatting objects will look worse than in the <see cref="F:Aspose.Recognition.RecognitionMode.Textbox" /> mode.</para>
+      </remarks>
+    </member>
+    <member name="F:Aspose.Recognition.RecognitionMode.Textbox">
+      <summary>
+        <para>This mode is fast and good for maximally preserving original look of the PDF file, 
+            but editability of the resulting document could be limited.</para>
+        <para>Every visually grouped block of text int the original PDF file is converted into a textbox 
+            in the resulting document. This achieves maximal resemblance of the output document to the original 
+            PDF file. The output document will look good, but it will consist entirely of textboxes and it 
+            could makes further editing of the document in Microsoft Word quite hard.</para>
+        <para>This is the default mode in <see cref="T:Aspose.Recognition.PdfRecognizer" />.</para>
+      </summary>
+    </member>
+    <member name="F:Aspose.Recognition.RecognitionMode.Flow">
+      <summary>
+            Full recognition mode, the engine performs grouping and multi-level analysis to restore
+            the original document author's intent and produce a maximally editable document.
+            The downside is that the output document might look different from the original PDF file.
+            </summary>
+    </member>
+    <member name="T:Aspose.Recognition.PdfRecognizer">
+      <summary>
+            Provides methods to convert Adobe PDF (Portable Document Format) documents into
+            editable OOXML, DOC, RTF, WordprocessingML, OpenDocument and HTML documents.
+            </summary>
+      <remarks>
+        <para>The simplest method to convert a PDF document in a single step is to use
+            the <see cref="M:Aspose.Recognition.PdfRecognizer.Convert(System.String,System.String)" />.</para>
+        <para>To convert a PDF document into a word processing document, create a <see cref="T:Aspose.Recognition.PdfRecognizer" /> 
+            object, load the PDF document using the <see cref="M:Aspose.Recognition.PdfRecognizer.Open(System.String)" /> method and then
+            save to the desired format using the <see cref="M:Aspose.Recognition.PdfRecognizer.Save(System.String)" /> method.</para>
+        <para>To monitor conversion progress you can attach an event handler to the 
+            <see cref="E:Aspose.Recognition.PdfRecognizer.Progress" /> event.</para>
+        <para>Two modes of operations are provided by <see cref="T:Aspose.Recognition.RecognitionMode" /> in order to set priority 
+            either for document readability or text editability.
+            </para>
+        <para>A PDF document is good for viewing and printing, but there is sometimes a need to convert it back 
+            into an editable (word processing) document. The problem with conversion is that PDF documents are 
+            "fixed-layout" documents and consist of commands that describe positions of text and graphics on pages, 
+            but they do not describe elements such as paragraphs, tables, headers/footers, sections and so on commonly 
+            found in word processing documents. When you load a PDF document into <see cref="T:Aspose.Recognition.PdfRecognizer" />, 
+            it executes a complex pattern recognition algorithm to infer the editable document structure from 
+            the PDF commands. Once recognition is complete, you can save the resulting word processing document 
+            in a number of popular document formats.</para>
+      </remarks>
+    </member>
+    <member name="M:Aspose.Recognition.PdfRecognizer.#ctor">
+      <overloads>Initializes a new instance of this class.</overloads>
+      <summary>
+            Initializes a new instance of this class using the default (textbox) recognition mode.
+            </summary>
+    </member>
+    <member name="M:Aspose.Recognition.PdfRecognizer.#ctor(Aspose.Recognition.RecognitionMode)">
+      <summary>
+            Initializes a new instance of this class using a specified <see cref="T:Aspose.Recognition.RecognitionMode" />.
+            </summary>
+      <param name="mode">Specifies the recognition mode to use.</param>
+    </member>
+    <member name="M:Aspose.Recognition.PdfRecognizer.Convert(System.String,System.String)">
+      <overloads>Converts a PDF document into a word processing document in a single step.</overloads>
+      <summary>
+            Converts a PDF document into a word processing document in a single step using default (textbox) recognition mode.
+            </summary>
+      <remarks>
+        <para>Calling this method is same as calling <see cref="M:Aspose.Recognition.PdfRecognizer.Open(System.String)" /> followed
+            by <see cref="M:Aspose.Recognition.PdfRecognizer.Save(System.String)" />.</para>
+        <para>For a list of supported save formats see <see cref="T:Aspose.Recognition.SaveFormat" />.</para>
+      </remarks>
+      <param name="srcFileName">The PDF file to read.</param>
+      <param name="dstFileName">The document to save to. The extension determines the document format.</param>
+    </member>
+    <member name="M:Aspose.Recognition.PdfRecognizer.Convert(System.String,System.String,Aspose.Recognition.RecognitionMode)">
+      <summary>
+            Converts a PDF document into a word processing document in a single step using
+            a specified <see cref="T:Aspose.Recognition.RecognitionMode" />.
+            </summary>
+      <remarks>
+        <para>Calling this method is same as calling <see cref="M:Aspose.Recognition.PdfRecognizer.Open(System.String)" /> followed
+            by <see cref="M:Aspose.Recognition.PdfRecognizer.Save(System.String)" />.</para>
+        <para>For a list of supported save formats see <see cref="T:Aspose.Recognition.SaveFormat" />.</para>
+        <para>The <see cref="T:Aspose.Recognition.RecognitionMode" /> parameter allows to shift priorities between readability 
+            and editability of the resulting document.</para>
+      </remarks>
+      <param name="srcFileName">The PDF file to read.</param>
+      <param name="dstFileName">The document to save to. The extension determines the document format.</param>
+      <param name="mode">Specifies the recognition mode to use.</param>
+    </member>
+    <member name="M:Aspose.Recognition.PdfRecognizer.Open(System.String)">
+      <overloads>Reads a PDF document and performs recognition.</overloads>
+      <summary>
+            Reads a PDF document from a file and performs recognition.
+            </summary>
+      <param name="fileName">The PDF file to read.</param>
+    </member>
+    <member name="M:Aspose.Recognition.PdfRecognizer.Open(System.IO.Stream)">
+      <summary>
+            Reads a PDF document from a stream and performs recognition.
+            </summary>
+      <remarks>
+        <para>The caller is responsible for closing the stream.</para>
+      </remarks>
+      <param name="stream">The stream that contains a PDF document to read.</param>
+    </member>
+    <member name="M:Aspose.Recognition.PdfRecognizer.Save(System.String)">
+      <overloads>Saves the current PDF document as a word processing document.</overloads>
+      <summary>
+            Saves the current PDF document as a word processing document into a file. 
+            The save format is specified by the file extension.
+            </summary>
+      <remarks>
+        <para>For a list of supported save formats see <see cref="T:Aspose.Recognition.SaveFormat" />.</para>
+      </remarks>
+      <param name="fileName">The name of the file to save to.</param>
+    </member>
+    <member name="M:Aspose.Recognition.PdfRecognizer.Save(System.String,Aspose.Recognition.SaveFormat)">
+      <summary>
+            Saves the current PDF document as a word processing document into a file. 
+            </summary>
+      <param name="fileName">The name of the file to save to.</param>
+      <param name="saveFormat">The format of the saved document.</param>
+    </member>
+    <member name="M:Aspose.Recognition.PdfRecognizer.Save(System.IO.Stream,Aspose.Recognition.SaveFormat)">
+      <summary>
+            Saves the current PDF document as a word processing document into a stream.
+            </summary>
+      <remarks>
+        <para>The caller is responsible for closing the stream.</para>
+      </remarks>
+      <param name="stream">The stream to save to.</param>
+      <param name="saveFormat">The format of the saved document.</param>
+    </member>
+    <member name="E:Aspose.Recognition.PdfRecognizer.Progress">
+      <summary>
+            Periodically occurs during loading and recognition of a PDF document.
+            </summary>
+      <remarks>
+        <para>A PDF document is a series of drawing commands that describe location of text and images 
+            on a page. Meaningfully converting PDF into word processing documents involves complex pattern 
+            recognition algorithms and could take a while, especially for documents larger than 10-20 pages.</para>
+        <para>You can attach an event handler to this event to monitor the PDF conversion progress.</para>
+      </remarks>
+    </member>
+    <member name="T:Aspose.Recognition.ProgressEventHandler">
+      <summary>
+            Represents the method that handles the <see cref="E:Aspose.Recognition.PdfRecognizer.Progress" /> event.
+            </summary>
+      <param name="sender">The source of the event.</param>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="T:Aspose.Recognition.ProgressEventArgs">
+      <summary>
+            Provides data for the <see cref="E:Aspose.Recognition.PdfRecognizer.Progress" /> event.
+            </summary>
+    </member>
+    <member name="P:Aspose.Recognition.ProgressEventArgs.Current">
+      <summary>
+            Gets the current number of pages processed. This is always less than or equal to <see cref="P:Aspose.Recognition.ProgressEventArgs.Total" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Recognition.ProgressEventArgs.Total">
+      <summary>
+            Gets the total amount of pages required to be processed.
+            </summary>
+    </member>
+    <member name="T:Aspose.Recognition.SaveFormat">
+      <summary>
+            Indicates the format in which the recognized PDF document is to be saved.
+            </summary>
+    </member>
+    <member name="F:Aspose.Recognition.SaveFormat.Doc">
+      <summary>
+            Saves the document in the Microsoft Word 97 - 2003 Document format.
+            </summary>
+    </member>
+    <member name="F:Aspose.Recognition.SaveFormat.Text">
+      <summary>
+            Saves the document in the plain text format.
+            </summary>
+    </member>
+    <member name="F:Aspose.Recognition.SaveFormat.Html">
+      <summary>
+             Saves the document in the HTML format. Uses UTF8 encoding.
+            </summary>
+    </member>
+    <member name="F:Aspose.Recognition.SaveFormat.WordML">
+      <summary>
+            Saves the document in the Microsoft Word 2003 WordprocessingML format. Uses UTF8 encoding.
+            </summary>
+    </member>
+    <member name="F:Aspose.Recognition.SaveFormat.Rtf">
+      <summary>
+            Saves the document in the RTF format. All characters above 7-bits are escaped as hexadecimal or Unicode characters.
+            </summary>
+    </member>
+    <member name="F:Aspose.Recognition.SaveFormat.Docx">
+      <summary>
+            Saves the document as a Microsoft Office 2007 Open XML Document (macro-free).
+            </summary>
+    </member>
+    <member name="F:Aspose.Recognition.SaveFormat.Odt">
+      <summary>
+            Saves the document in the OpenDocument format. 
+            </summary>
+    </member>
+    <member name="F:Aspose.Recognition.SaveFormat.Mhtml">
+      <summary>
+            Saves the document in the MHTML (Web archive) format. Uses UTF8 encoding.
+            </summary>
+    </member>
+    <member name="T:Aspose.Recognition.NamespaceDoc">
+      <summary>
+        <p>The <b>Aspose.Recognition</b> namespace provides classes for converting PDF files into
+            word processing documents.</p>
+        <p>Aspose.Recognition is written completely in C#, CLS compliant, contains only safe managed code and has 
+            no dependencies. It runs on .NET Framework 1.0, 1.1, 2.0, 3.0 and 3.5 in x86 and x64 environments.</p>
+      </summary>
+    </member>
+    <member name="T:Aspose.Recognition.License">
+      <summary>
+            Provides methods to license the component.
+            </summary>
+      <example>
+            In this example, an attempt will be made to find a license file named MyLicense.lic
+            in the folder that contains 
+            
+            
+            the component, in the folder that contains the calling assembly,
+            in the folder of the entry assembly and then in the embedded resources of the calling assembly.
+            <code>
+            [C#]
+            
+            License license = new License();
+            license.SetLicense("MyLicense.lic");
+            
+            
+            [Visual Basic]
+            
+            Dim license As license = New license
+            License.SetLicense("MyLicense.lic")
+            </code></example>
+    </member>
+    <member name="M:Aspose.Recognition.License.#ctor">
+      <summary>
+            Initializes a new instance of this class.
+            </summary>
+      <example>
+            In this example, an attempt will be made to find a license file named MyLicense.lic
+            in the folder that contains 
+            
+            
+            the component, in the folder that contains the calling assembly,
+            in the folder of the entry assembly and then in the embedded resources of the calling assembly.
+            <code>
+            [C#]
+            
+            License license = new License();
+            license.SetLicense("MyLicense.lic");
+            
+            
+            [Visual Basic]
+            
+            Dim license As license = New license
+            License.SetLicense("MyLicense.lic")
+            </code></example>
+    </member>
+    <member name="M:Aspose.Recognition.License.SetLicense(System.String)">
+      <summary>
+            Licenses the component.
+            </summary>
+      <remarks>
+        <p>Tries to find the license in the following locations:</p>
+        <p>1. Explicit path.</p>
+        <p>2. The folder of the component assembly.</p>
+        <p>3. The folder of the client's calling assembly.</p>
+        <p>4. The folder of the entry assembly.</p>
+        <p>5. An embedded resource in the client's calling assembly.</p>
+        <p>
+          <b>Note:</b>On the .NET Compact Framework, tries to find the license only in these locations:</p>
+        <p>1. Explicit path.</p>
+        <p>2. An embedded resource in the client's calling assembly.</p>
+      </remarks>
+      <example>
+            In this example, an attempt will be made to find a license file named MyLicense.lic
+            in the folder that contains 
+            
+            
+            the component, in the folder that contains the calling assembly,
+            in the folder of the entry assembly and then in the embedded resources of the calling assembly.
+            <code>
+            [C#]
+            
+            License license = new License();
+            license.SetLicense("MyLicense.lic");
+            
+            
+            [Visual Basic]
+            
+            Dim license As License = New License
+            license.SetLicense("MyLicense.lic")
+            </code><param name="licenseName">Can be a full or short file name or name of an embedded resource.
+            Use an empty string to switch to evaluation mode.</param></example>
+    </member>
+    <member name="M:Aspose.Recognition.License.SetLicense(System.IO.Stream)">
+      <summary>
+            Licenses the component.
+            </summary>
+      <param name="stream">A stream that contains the license.</param>
+      <remarks>
+        <p>Use this method to load a license from a stream.</p>
+      </remarks>
+      <example>
+        <code>
+            [C#]
+            
+            License license = new License();
+            license.SetLicense(myStream);
+            
+            
+            [Visual Basic]
+            
+            Dim license as License = new License
+            license.SetLicense(myStream)
+            </code>
+      </example>
+    </member>
+  </members>
+</doc>

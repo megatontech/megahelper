@@ -1,0 +1,12 @@
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\bin\Debug\ToText.exe
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\bin\Debug\ToText.pdb
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\ToText.Form1.resources
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\ToText.Properties.Resources.resources
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\ToText.exe
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\ToText.pdb
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\Interop.MODI.dll
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\ToText.csproj.ResolveComReference.cache
+C:\Users\Stone_W\Desktop\ToText\ToText\ToText\obj\x86\Debug\ToText.Form2.resources

@@ -1,0 +1,441 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>Aspose.Editor.Server</name>
+  </assembly>
+  <members>
+    <member name="T:Aspose.Editor.Server.DocumentFormat">
+      <summary>
+            Indicates the format of a document.
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.None">
+      <summary>
+            Unknown or unsupported format.
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.Doc">
+      <summary>
+            Microsoft Word binary .DOC format.
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.Text">
+      <summary>
+            Plain text format.
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.AsposePdf">
+      <summary>
+            Aspose.Pdf.Xml format that can be read by Aspose.Pdf to produce a PDF file.
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.Html">
+      <summary>
+            HTML format. Uses UTF8 encoding.
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.Rtf">
+      <summary>
+            RTF format. All characters above 7-bits are escaped as hexadecimal or 
+            Unicode characters.
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.Docx">
+      <summary>
+            WordprocessingML (Microsoft Word 2003 XML) format. Uses UTF8 encoding.
+            </summary>
+      <summary>
+            Microsoft Office 2007 Open XML format (macro-free). 
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.Docm">
+      <summary>
+            Microsoft Office 2007 Open XML format Macro-Enabled Document. 
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.Odt">
+      <summary>
+            OpenDocument Text.
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.Dot">
+      <summary>
+            Microsoft Word binary .DOT Template format.
+            </summary>
+    </member>
+    <member name="F:Aspose.Editor.Server.DocumentFormat.Mhtml">
+      <summary>
+            HTML format. Uses UTF8 encoding.
+            </summary>
+    </member>
+    <member name="T:Aspose.Editor.Server.License">
+      <summary>
+            Provides methods to license the component.
+            </summary>
+    </member>
+    <member name="M:Aspose.Editor.Server.License.#ctor">
+      <summary>
+            Initializes a new instance of this class.
+            </summary>
+      <example>
+            In this example, an attempt will be made to find a license file named MyLicense.lic
+            in the folder that contains 
+            
+            
+            the component, in the folder that contains the calling assembly,
+            in the folder of the entry assembly and then in the embedded resources of the calling assembly.
+            <code>
+            [C#]
+            
+            License license = new License();
+            license.SetLicense("MyLicense.lic");
+            
+            
+            [Visual Basic]
+            
+            Dim license As license = New license
+            License.SetLicense("MyLicense.lic")
+            </code></example>
+    </member>
+    <member name="M:Aspose.Editor.Server.License.SetLicense(System.String)">
+      <summary>
+            Licenses the component.
+            </summary>
+      <remarks>
+        <p>Tries to find the license in the following locations:</p>
+        <p>1. Explicit path.</p>
+        <p>2. The folder of the component assembly.</p>
+        <p>3. The folder of the client's calling assembly.</p>
+        <p>4. The folder of the entry assembly.</p>
+        <p>5. An embedded resource in the client's calling assembly.</p>
+        <p>
+          <b>Note:</b>On the .NET Compact Framework, tries to find the license only in these locations:</p>
+        <p>1. Explicit path.</p>
+        <p>2. An embedded resource in the client's calling assembly.</p>
+      </remarks>
+      <example>
+            In this example, an attempt will be made to find a license file named MyLicense.lic
+            in the folder that contains 
+            
+            
+            the component, in the folder that contains the calling assembly,
+            in the folder of the entry assembly and then in the embedded resources of the calling assembly.
+            <code>
+            [C#]
+            
+            License license = new License();
+            license.SetLicense("MyLicense.lic");
+            
+            
+            [Visual Basic]
+            
+            Dim license As License = New License
+            license.SetLicense("MyLicense.lic")
+            </code><param name="licenseName">Can be a full or short file name or name of an embedded resource.
+            Use an empty string to switch to evaluation mode.</param></example>
+    </member>
+    <member name="M:Aspose.Editor.Server.License.SetLicense(System.IO.Stream)">
+      <summary>
+            Licenses the component.
+            </summary>
+      <param name="stream">A stream that contains the license.</param>
+      <remarks>
+        <p>Use this method to load a license from a stream.</p>
+      </remarks>
+      <example>
+        <code>
+            [C#]
+            
+            License license = new License();
+            license.SetLicense(myStream);
+            
+            
+            [Visual Basic]
+            
+            Dim license as License = new License
+            license.SetLicense(myStream)
+            </code>
+      </example>
+    </member>
+    <member name="T:Aspose.Editor.Server.EditorControlDesigner">
+      <exclude />
+      <summary>
+            Designer for the <see cref="T:Aspose.Editor.Server.EditorControl" /> class.
+            It allows resizing of the control in design time.
+            </summary>
+    </member>
+    <member name="M:Aspose.Editor.Server.EditorControlDesigner.GetDesignTimeHtml">
+      <summary>
+             Gets the HTML that is used to represent the control at design time.   
+            </summary>
+      <returns>The HTML that is used to represent the control at design time.</returns>
+    </member>
+    <member name="P:Aspose.Editor.Server.EditorControlDesigner.AllowResize">
+      <summary>
+            Gets a value indicating whether the control can be resized.
+            </summary>
+    </member>
+    <member name="T:Aspose.Editor.Server.EditorControl">
+      <summary>
+            Generates HTML code that renders the client <c>EditorControl</c> on a web page.
+            Provides a way to exchange documents with the client by exposing document received and
+            document requested events on the server.
+            </summary>
+      <remarks>
+        <p>By default, <see cref="T:Aspose.Editor.Server.EditorControl" /> is installed in the Visual Studio .NET Toolbox.
+            To use <see cref="T:Aspose.Editor.Server.EditorControl" /> in your ASP.NET application, your need to create a <see cref="T:System.Web.UI.Page" />
+            and drag <see cref="T:Aspose.Editor.Server.EditorControl" /> from the Toolbox into your page.
+            </p>
+      </remarks>
+    </member>
+    <member name="M:Aspose.Editor.Server.EditorControl.#ctor">
+      <summary>
+             Initializes a new instance of the <see cref="T:Aspose.Editor.Server.EditorControl" /> class.
+             </summary>
+      <remarks>
+        <p>Although you can use this constructor to create new instances of the <see cref="T:Aspose.Editor.Server.EditorControl" />
+             class, normally, you would drag <see cref="T:Aspose.Editor.Server.EditorControl" /> from the Toolbox onto a web page.</p>
+        <p>After <see cref="T:Aspose.Editor.Server.EditorControl" /> is created, you need to wire document events and optionally
+             specify document preloading parameters.</p>
+        <seealso cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived" />
+        <seealso cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested" />
+        <seealso cref="T:Aspose.Editor.Server.DocumentEventArgs" />
+      </remarks>
+    </member>
+    <member name="M:Aspose.Editor.Server.EditorControl.OnPageLoad">
+      <summary>
+             Analyses a client request and fires <see cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived" /> and
+             <see cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested" /> events.
+             </summary>
+      <remarks>
+        <p>If a request is recognized as a valid request from Aspose.Editor.Client, then this method
+             raises appropriate events and sends a response to the client. If a request is not recognized,
+             this method does nothing.</p>
+        <p>Typically, this method is called as part of <see cref="M:System.Web.UI.Control.OnLoad(System.EventArgs)" /> and before any other
+             request processing is done.</p>
+        <p>Client <c>EditorControl</c> uses HTTP GET method to request a document from the server,
+             and HTTP POST method to send a document to the server. Other HTTP requests aren't recognized.</p>
+        <p>Exceptions thrown in the <see cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived" />, <see cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested" /> and
+             <see cref="E:Aspose.Editor.Server.EditorControl.Responding" /> event handlers are sent to the client control as HTTP 500 errors with
+             description set to exception message. When throwing exceptions make sure message is HTTP protocol
+             compliant. If exception message contains invalid HTTP literals then client will receive unrelated
+             protocol error instead.</p>
+      </remarks>
+      <event cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived">Raised if the server has received a document from the client.</event>
+      <event cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested">Raised if the server has received a request for a document from the client.</event>
+    </member>
+    <member name="M:Aspose.Editor.Server.EditorControl.ChannelToStream(System.Byte[],Aspose.Editor.Server.DocumentFormat)">
+      <summary>
+            Converts the document received from the client as array of bytes into the file
+            stream in the specified document format.
+            </summary>
+      <param name="bytes">Array of bytes, received from client.</param>
+      <param name="format">Required format of the stream.</param>
+      <returns>File stream in the specified format.</returns>
+      <remarks>
+            An application can use this method with custom send/receive channels.
+            </remarks>
+    </member>
+    <member name="M:Aspose.Editor.Server.EditorControl.StreamToChannel(System.IO.Stream)">
+      <summary>
+            Converts the document file stream into the array of bytes which
+            can be sent to the client.
+            </summary>
+      <param name="stream">File stream.</param>
+      <returns>Array of bytes, which can be sent to the client.</returns>
+      <remarks>
+            Application can use this method with custom send/receive channels.
+            </remarks>
+    </member>
+    <member name="P:Aspose.Editor.Server.EditorControl.PreloadStream">
+      <summary>
+             Sets the document to be preloaded when the client control is activated on the page.
+             </summary>
+      <remarks>
+        <p>This methods serializes the document into a string and embedds it directly
+             into the page. This allows client <c>EditorControl</c> to instantly render the document when
+             the page is loaded into the browser because the document is already downloaded to the client
+             and no additional server requests are necessary.</p>
+        <p>If set, it will erase the values of the <see cref="P:Aspose.Editor.Server.EditorControl.PreloadUrl" /> and <see cref="P:Aspose.Editor.Server.EditorControl.PreloadParam" /> properties.</p>
+      </remarks>
+    </member>
+    <member name="P:Aspose.Editor.Server.EditorControl.PreloadUrl">
+      <summary>
+             Sets the server URL to be queried by the client <c>EditorControl</c> in order to preload a document.
+             </summary>
+      <remarks>
+        <p>This property embeds the specified URL into a page. When the browser renders the page,
+             client <c>EditorControl</c> will request a document from the server using the specified URL
+             and <see cref="P:Aspose.Editor.Server.EditorControl.PreloadParam" /> values.</p>
+        <p>The server page must handle <see cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested" /> event in order for URL
+             preloading to work.</p>
+        <p>Due to page loading timeout, large documents may fail to preload using this method.
+             In this case, preloading must be implemented through <see cref="P:Aspose.Editor.Server.EditorControl.PreloadStream" /> or as
+             a client side script which is invoked after the page is loaded.</p>
+        <p>If set, it will erase the value of the <see cref="P:Aspose.Editor.Server.EditorControl.PreloadStream" /> property.</p>
+      </remarks>
+    </member>
+    <member name="P:Aspose.Editor.Server.EditorControl.PreloadParam">
+      <summary>
+            Sets a custom parameter value that will be passed from the client to the server along with the URL
+            request for the document.
+            </summary>
+      <remarks>
+        <p>This property is used in conjunction with <see cref="P:Aspose.Editor.Server.EditorControl.PreloadUrl" />.</p>
+        <p>The server page must handle <see cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested" /> event in order for URL preloading to work.</p>
+        <p>If set, it will erase the value of the <see cref="P:Aspose.Editor.Server.EditorControl.PreloadStream" /> property.</p>
+      </remarks>
+    </member>
+    <member name="P:Aspose.Editor.Server.EditorControl.ClassId">
+      <summary>
+            Gets or sets value of the classId attribute rendered on the page for the client editor control.
+            If set this value overrides automatically generated value.
+            </summary>
+      <remarks>This property may be usefull if server uses https and client has issues connecting to the server.</remarks>
+    </member>
+    <member name="E:Aspose.Editor.Server.EditorControl.DocumentRequested">
+      <summary>
+             Occurs when server <see cref="T:Aspose.Editor.Server.EditorControl" /> receives a request for a document from the client.
+             </summary>
+      <remarks>
+        <p>The server page must implement this event handler in order to be able to send documents to
+             the client. Inside the event handler, use the <see cref="M:Aspose.Editor.Server.DocumentEventArgs.SetDocument(System.IO.Stream)" />
+             method to specify which document must be sent to the client.</p>
+        <p>If you do not implement this event handler, or if you don't specify a document using
+             <see cref="M:Aspose.Editor.Server.DocumentEventArgs.SetDocument(System.IO.Stream)" />, the client will receive an HTTP error in response.</p>
+      </remarks>
+      <seealso cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived" />
+    </member>
+    <member name="E:Aspose.Editor.Server.EditorControl.DocumentReceived">
+      <summary>
+             Occurs when server <see cref="T:Aspose.Editor.Server.EditorControl" /> receives a document from the client.
+             </summary>
+      <remarks>
+        <p>The server page must implement this event handler in order to be able to receive documents
+             from the client. Inside the event handler, use the <see cref="M:Aspose.Editor.Server.DocumentEventArgs.GetDocument(Aspose.Editor.Server.DocumentFormat)" />
+             method to retrieve the document as a stream.</p>
+        <p>If you do not implement this event handler, the client will receive an HTTP error in response.</p>
+      </remarks>
+    </member>
+    <member name="E:Aspose.Editor.Server.EditorControl.Responding">
+      <summary>
+            Occurs before server <see cref="T:Aspose.Editor.Server.EditorControl" /> sends a response to the client.
+            </summary>
+      <remarks>
+        <p>You can use this event to access the <see cref="T:System.Web.HttpResponse" /> object before the response is sent
+            to the client. You can add HTTP headers but should not alter the response body, otherwise the client
+            <c>EditorControl</c> will be unable to receive the document properly.</p>
+      </remarks>
+    </member>
+    <member name="T:Aspose.Editor.Server.DocumentFormatDetector">
+      <summary>
+            Detects document file format.
+            </summary>
+    </member>
+    <member name="M:Aspose.Editor.Server.DocumentFormatDetector.Detect(System.IO.Stream)">
+      <overloads>
+            Detects document format.
+            </overloads>
+      <summary>
+            Detects document format from stream.
+            </summary>
+      <param name="stream">Document stream.</param>
+      <returns>Detected format of the document.</returns>
+      <remarks>
+        <p>Stream must support read and seek operations.</p>
+      </remarks>
+    </member>
+    <member name="M:Aspose.Editor.Server.DocumentFormatDetector.Detect(System.String)">
+      <summary>
+            Detects document format from file.
+            </summary>
+      <param name="fileName">Document file name.</param>
+      <returns>Detected format of the document.</returns>
+      <remarks>
+        <p>This is a shortcut for <c>using (Stream stream = File.OpenRead(fileName)) DocumentFormatDetector.<see cref="M:Aspose.Editor.Server.DocumentFormatDetector.Detect(System.IO.Stream)" />(stream);</c>.</p>
+        <p>Method must be able to acces and read file referenced with <paramref name="fileName" />.</p>
+      </remarks>
+    </member>
+    <member name="T:Aspose.Editor.Server.DocumentEventHandler">
+      <summary>
+            Represents the method that will handle the <see cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested" />
+            and <see cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived" /> events.
+            </summary>
+    </member>
+    <member name="T:Aspose.Editor.Server.DocumentEventArgs">
+      <summary>
+            Provides data for the <see cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested" /> and
+            <see cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived" /> events.
+            </summary>
+    </member>
+    <member name="M:Aspose.Editor.Server.DocumentEventArgs.SetDocument(System.IO.Stream)">
+      <summary>
+            Sets the document that will be sent to the client.
+            </summary>
+      <param name="inputStream">The stream that contains the document.</param>
+      <remarks>
+        <p>This method reads the stream from the current position until the end, it then converts and writes
+            content into the Page.HttpReponse.</p>
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="inputStream" /> is null.</exception>
+      <exception cref="T:System.ArgumentException">Thrown if <paramref name="inputStream" /> doesn't support reading.</exception>
+      <seealso cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested" />
+    </member>
+    <member name="M:Aspose.Editor.Server.DocumentEventArgs.GetDocument(Aspose.Editor.Server.DocumentFormat)">
+      <overloads>
+            Retrieves the document received from the client.
+            </overloads>
+      <summary>
+            Gets received document in the specified format as a memory stream.
+            </summary>
+      <param name="outputFormat">The document format to convert to. Note that
+            <see cref="F:Aspose.Editor.Server.DocumentFormat.Text" /> uses UTF-8 encoding.</param>
+      <returns>A stream that contains the received document in the specified format.
+            Stream position is at start.</returns>
+      <exception cref="T:System.ArgumentException">Thrown if <paramref name="outputFormat" /> is DocumentFormat.None.</exception>
+      <seealso cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived" />
+    </member>
+    <member name="M:Aspose.Editor.Server.DocumentEventArgs.GetDocument(System.IO.Stream,Aspose.Editor.Server.DocumentFormat)">
+      <summary>
+            Saves the document received from the client into the specified stream in the specified format.
+            </summary>
+      <param name="outputStream">The stream to save the document to.</param>
+      <param name="outputFormat">The document format to convert to.</param>
+      <exception cref="T:System.ArgumentException">
+        <p>Thrown if <paramref name="outputFormat" /> is DocumentFormat.None; or</p>
+        <p>If <paramref name="outputStream" /> doesn't support writing.</p>
+      </exception>
+      <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="outputStream" /> is <c>null</c>.</exception>
+      <seealso cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived" />
+    </member>
+    <member name="P:Aspose.Editor.Server.DocumentEventArgs.Param">
+      <summary>
+             Gets or sets a custom string parameter passed to/from the client.
+             </summary>
+      <remarks>
+        <p>The value is application defined and is typically used to identify the document passed
+             between the client and the server, for example the name of the document.</p>
+        <p>When the script on the page calls <c>Send</c> or <c>Receive</c> method of the client
+             <c>EditorControl</c> it specifies this value, which is then embedded into the HTTP header
+             and passed to the server. On the server, when <see cref="E:Aspose.Editor.Server.EditorControl.DocumentRequested" /> or
+             <see cref="E:Aspose.Editor.Server.EditorControl.DocumentReceived" /> event is raised, the event handler receives
+             <see cref="T:Aspose.Editor.Server.DocumentEventArgs" /> and can read this value to identify the document.</p>
+      </remarks>
+      <example>Shows how a client page can pass a Param value to the server.
+             <code lang="JScript">
+                 // Receives document from server using control Receive(string, string) method
+                 // Param is used to pass document file name.
+                 serverControl.Receive('http://www.mysite.com/myapp.aspx', 'Welcome.xml');
+             </code></example>
+    </member>
+    <member name="T:Aspose.Editor.Server.NamespaceDoc">
+      <summary>
+        <p>The <b>Aspose.Editor.Server</b> namespace contains server-side classes of the Aspose.Editor
+            control that runs on the server in an ASP.NET application and communicates with <b>Aspose.Editor.Client</b>
+            that runs in the client browser to exchange documents.</p>
+        <p>Aspose.Editor is written completely in C#, CLS compliant and contains 
+            only safe managed code. Microsoft Word is not required in order to use Aspose.Editor.</p>
+      </summary>
+    </member>
+  </members>
+</doc>
