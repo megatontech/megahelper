@@ -193,43 +193,95 @@
     <Compile Include="Text\XMLHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dll\Aspose.Cells.dll" />
-    <Content Include="Dll\Aspose.Diagram.dll" />
-    <Content Include="Dll\Aspose.Editor.Client.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Cells.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\Aspose.Diagram.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\Aspose.Editor.Client.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Editor.Client.xml" />
-    <Content Include="Dll\Aspose.Editor.Desktop.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Editor.Desktop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Editor.Desktop.xml" />
-    <Content Include="Dll\Aspose.Editor.Server.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Editor.Server.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Editor.Server.xml" />
-    <Content Include="Dll\Aspose.Flash.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Flash.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Flash.xml" />
-    <Content Include="Dll\Aspose.Form.dll" />
-    <Content Include="Dll\Aspose.Network.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Form.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\Aspose.Network.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Network.xml" />
-    <Content Include="Dll\Aspose.Pdf.dll" />
-    <Content Include="Dll\Aspose.Pdf.Kit.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Pdf.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\Aspose.Pdf.Kit.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Pdf.Kit.xml" />
     <Content Include="Dll\Aspose.Pdf.xml" />
-    <Content Include="Dll\Aspose.Recognition.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Recognition.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Recognition.xml" />
-    <Content Include="Dll\Aspose.Slides.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Slides.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Slides.xml" />
-    <Content Include="Dll\Aspose.Tasks.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Tasks.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Tasks.xml" />
-    <Content Include="Dll\Aspose.Words.dll" />
+    <EmbeddedResource Include="Dll\Aspose.Words.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Dll\Aspose.Words.xml" />
-    <Content Include="Dll\AspriseOCR.dll" />
-    <Content Include="Dll\AutoMapper.dll" />
-    <Content Include="Dll\DevIL.dll" />
-    <Content Include="Dll\ICSharpCode.SharpZipLib.dll" />
-    <Content Include="Dll\ILU.dll" />
-    <Content Include="Dll\iTextAsian.dll" />
-    <Content Include="Dll\iTextAsianCmaps.dll" />
-    <Content Include="Dll\itextsharp.dll" />
-    <Content Include="Dll\MySql.Data.dll" />
-    <Content Include="Dll\Newtonsoft.Json.dll" />
-    <Content Include="Dll\System.Data.SQLite.dll" />
-    <Content Include="Dll\zxing.dll" />
+    <EmbeddedResource Include="Dll\AspriseOCR.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\AutoMapper.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\DevIL.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\ICSharpCode.SharpZipLib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\ILU.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\iTextAsian.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\iTextAsianCmaps.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\itextsharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\MySql.Data.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\System.Data.SQLite.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dll\zxing.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">

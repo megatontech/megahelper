@@ -1,0 +1,8 @@
+C:\Users\megat\OneDrive\megahelper\FunctionDemo\bin\Debug\FunctionDemo.exe
+C:\Users\megat\OneDrive\megahelper\FunctionDemo\bin\Debug\FunctionDemo.pdb
+C:\Users\megat\OneDrive\megahelper\FunctionDemo\obj\Debug\FunctionDemo.csprojResolveAssemblyReference.cache
+C:\Users\megat\OneDrive\megahelper\FunctionDemo\obj\Debug\FunctionDemo.Properties.Resources.resources
+C:\Users\megat\OneDrive\megahelper\FunctionDemo\obj\Debug\FunctionDemo.csproj.GenerateResource.Cache
+C:\Users\megat\OneDrive\megahelper\FunctionDemo\obj\Debug\FunctionDemo.exe.licenses
+C:\Users\megat\OneDrive\megahelper\FunctionDemo\obj\Debug\FunctionDemo.exe
+C:\Users\megat\OneDrive\megahelper\FunctionDemo\obj\Debug\FunctionDemo.pdb
