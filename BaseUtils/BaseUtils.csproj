@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{75D07734-43BB-4099-829F-CBECDA58CBA1}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BaseUtils</RootNamespace>
     <AssemblyName>BaseUtils</AssemblyName>
@@ -30,14 +30,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Cells">
-      <HintPath>..\..\..\..\Users\Administrator\测试项目\ASPOSEdll\Aspose.Cells.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>Dll\Aspose.Cells.dll</HintPath>
     </Reference>
     <Reference Include="Aspose.Diagram">
       <HintPath>..\..\..\..\Users\Administrator\测试项目\ASPOSEdll\Aspose.Diagram.dll</HintPath>
@@ -104,7 +104,8 @@
       <HintPath>..\CRPresentation.Web\bin\iTextAsianCmaps.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\CRPresentation.Web\bin\itextsharp.dll</HintPath>
+      <HintPath>Dll\itextsharp.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="MySql.Data">
       <HintPath>Dll\MySql.Data.dll</HintPath>

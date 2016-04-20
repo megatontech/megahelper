@@ -1,0 +1,7 @@
+C:\Users\Admin\OneDrive\megahelper\FunctionDemo\bin\Release\FunctionDemo.exe
+C:\Users\Admin\OneDrive\megahelper\FunctionDemo\bin\Release\FunctionDemo.pdb
+C:\Users\Admin\OneDrive\megahelper\FunctionDemo\obj\Release\FunctionDemo.Properties.Resources.resources
+C:\Users\Admin\OneDrive\megahelper\FunctionDemo\obj\Release\FunctionDemo.csproj.GenerateResource.Cache
+C:\Users\Admin\OneDrive\megahelper\FunctionDemo\obj\Release\FunctionDemo.exe.licenses
+C:\Users\Admin\OneDrive\megahelper\FunctionDemo\obj\Release\FunctionDemo.exe
+C:\Users\Admin\OneDrive\megahelper\FunctionDemo\obj\Release\FunctionDemo.pdb

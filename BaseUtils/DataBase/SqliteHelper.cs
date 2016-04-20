@@ -23,6 +23,12 @@ namespace BaseUtils.DataBase
         }
 
         #region 公用方法
+        public static bool CreateDBFile(string path) 
+        {
+            string datasource = path;
+            System.Data.SQLite.SQLiteConnection.CreateFile(datasource);
+            return true;
+        }
 
         public static int GetMaxID(string FieldName, string TableName)
         {
