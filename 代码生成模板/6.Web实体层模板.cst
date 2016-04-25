@@ -1,0 +1,127 @@
+﻿<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="C#" Src="" Inherits="CodeSmith.BaseTemplates.SqlCodeTemplate" Debug="False" Description="从数据库 生成实体。" %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="SchemaExplorer" %>  
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Property Name="ProjectName" Type="System.String"  Category="0.Init"  Optional="True" Default="GS" Description="项目名称，用于生成命名空间，如：输入WebDG后，对应的Model的命名空间为（WebDG.Model.Entity），DAL层的命名空间为（WebDG.DAL），BLL层的命名空间为（WebDG.BLL）"   %>
+
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="1.Context" 
+Description="Table that the stored procedures should be based on.---" %>
+<%
+string modelName=SourceTable.Name.Substring(3,SourceTable.Name.Length-3)+"Model";
+%>
+<script runat="template">
+public string GetColumnAttribute(){   
+    string str="";
+    foreach (var column in SourceTable.Columns) {
+        str+="[ResourceDisplayName(\"\")]\r\n\t\t  ";
+        string columnType=column.NativeType;
+        int i= column.Name.IndexOf("_");
+        if(columnType=="nvarchar"){
+            columnType="string";
+        }
+         if(columnType=="bit"){
+            columnType="bool";
+        }
+         if(columnType=="date"){
+            columnType="DateTime";
+        } 
+         str += "public " + columnType + " " + column.Name.Substring(i+1,1).ToUpperInvariant()+column.Name.Substring(i+2,column.Name.Length-i-2)+" {get;set;}\r\n\t\t  " ; 
+    }   
+    return str;
+}
+</script> 
+
+
+
+//-----------------------------------------------------------------
+//-- Date Created: <%= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") %>
+//-- Created By:   Yuri
+//-- Copyright © www.ef-automation.com 2015. All right reserved.
+//-----------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AutoMapper;
+using FluentValidation;
+using FluentValidation.Attributes;
+using III.<%=ProjectName%>.Entity;
+using III.Web.Framework.Infrastructure.Mapping;
+using III.Web.Framework.UI;
+
+namespace III.Web.<%=ProjectName%>.Models
+{
+     [Validator(typeof(<%=SourceTable.Name %>ModelValidator))]
+      public class <%=SourceTable.Name %>Model : IMapFrom<<%=SourceTable.Name %>>, IHaveCustomMappings
+      {
+      
+          public <%=SourceTable.Name %>Model()
+          {
+                
+          } 
+          #region Model.Attribute           
+          <%= GetColumnAttribute() %>   
+          #endregion
+          public void CreateMappings(IConfiguration configuration)// IHaveCustomMappings匹配字段名称不一样的时候
+          {
+           
+          }
+      }
+    public class <%=SourceTable.Name %>ModelValidator : AbstractValidator<<%=SourceTable.Name %>Model>
+    {
+        public <%=SourceTable.Name %>ModelValidator()
+        {
+            //RuleFor(x => x.Id).NotEmpty();
+        }
+    }
+
+}
+
+<script runat="template">
+public string GetCSharpVariableType(ColumnSchema column)
+{
+    if (column.Name.EndsWith("TypeCode")) return column.Name;
+    switch (column.DataType)
+    {
+        case DbType.AnsiString: return "string";
+        case DbType.AnsiStringFixedLength: return "string";
+        case DbType.Binary: return "byte[]";
+        case DbType.Boolean: return "bool";
+        case DbType.Byte: return "byte";
+        case DbType.Currency: return "decimal";
+        case DbType.Date: return "DateTime";
+        case DbType.DateTime: return "DateTime";
+        case DbType.Decimal: return "decimal";
+        case DbType.Double: return "double";
+        case DbType.Guid: return "Guid";
+        case DbType.Int16: return "short";
+        case DbType.Int32: return "int";
+        case DbType.Int64: return "long";
+        case DbType.Object: return "object";
+        case DbType.SByte: return "sbyte";
+        case DbType.Single: return "float";
+        case DbType.String: return "string";
+        case DbType.StringFixedLength: return "string";
+        case DbType.Time: return "TimeSpan";
+        case DbType.UInt16: return "ushort";
+        case DbType.UInt32: return "uint";
+        case DbType.UInt64: return "ulong";
+        case DbType.VarNumeric: return "decimal";
+        default:
+        {
+            return "__UNKNOWN__" + column.NativeType;
+        }
+    }
+}
+
+</script>

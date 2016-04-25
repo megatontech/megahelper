@@ -1,0 +1,214 @@
+﻿<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="C#" Src="" Inherits="CodeSmith.BaseTemplates.SqlCodeTemplate" Debug="False" Description="从数据库 生成实体。" %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Property Name="ProjectName" Type="System.String"  Category="0.Init"  Optional="True" Default="GS" Description="项目名称，用于生成命名空间，如：输入WebDG后，对应的Model的命名空间为（WebDG.Model.Entity），DAL层的命名空间为（WebDG.DAL），BLL层的命名空间为（WebDG.BLL）"   %>
+
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="1.Context" 
+Description="Table that the stored procedures should be based on.---" %>
+//-----------------------------------------------------------------
+//-- Date Created: <%= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") %>
+//-- Created By:   Yuri
+//-- Copyright © www.ef-automation.com 2015. All right reserved.
+//-----------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using III.Common;
+using III.Common.PTEnum;
+using III.<%=ProjectName%>.Entity;
+
+namespace III.<%=ProjectName%>.IO
+{
+    /// <summary>
+    /// <%=SourceTable.Name %>
+    /// </summary>
+    
+	public partial class <%=SourceTable.Name %>IO
+	{
+	    
+       
+        #region InsertMethod
+          /// <summary>
+          /// 新增一条记录
+          /// </summary>
+          /// <param name="model">实体模型</param>
+          /// <param name="id"></param>
+          /// <param name="errInfo"></param>
+          /// <returns>影响行数</returns>
+          public bool Insert(<%=SourceTable.Name %> model,out int id,out string errInfo)
+          {
+              bool success = false;
+              id = 0;
+             if (model != null)
+             {
+                id = Insert<%=SourceTable.Name %>(model,out id,out errInfo);
+                if (id  > 0 && errInfo == "")
+                {
+                    success = true;
+                }
+             }
+             else
+             {
+                errInfo = "数据不能为NULL!";
+             }
+             return success;
+          }
+      #endregion
+        #region UpdateMethod
+        /// <summary>
+        /// Mk_Downtime_downTimeModel更新一条记录
+        /// </summary>
+        /// <param name="model">实体模型</param>
+        /// <param name="errInfo"></param>
+        /// <returns>影响行数</returns>
+        public bool Update(<%=SourceTable.Name %> model,out string errInfo)
+        {
+            bool success = false;
+            if (model != null)
+            {
+                if (Update<%=SourceTable.Name %>(model, out errInfo) > 0 && errInfo == "")
+                {
+                    success = true;
+                }
+            }
+            else
+            {
+                errInfo = "数据不能为NULL!";
+            }
+
+            return success;
+        }   
+         #endregion         
+        #region GetModelMethod      
+        /// <summary>
+        ///  Mk_Downtime_downTimeModel获取一条记录
+        /// </summary>
+        /// <param name="id">记录编号</param>
+        /// <param name="errInfo"></param>
+        /// <returns>实体模型</returns>
+        public <%=SourceTable.Name %> GetModel(object id,out string errInfo)
+        {
+            var model = Get<%=SourceTable.Name %>Model(id, out errInfo);
+            return model;
+        }   
+         #endregion
+        #region GetCountMethod           
+         public bool GetCount(int pageCount, string str, out string errInfo)
+        {
+            bool success = false;           
+            if (Get<%=SourceTable.Name %>Count(pageCount,str,out errInfo) > 0 && errInfo == "")
+            {
+                success = true;
+            }           
+            return success;
+        }
+          #endregion
+         #region GetListMethod
+        /// <summary>
+        ///  Mk_Downtime_downTimeModel获取所有记录
+        /// </summary>
+        /// <param name="pageCount"></param>
+        /// <param name="str">查询条件，如：A = 'a' and B = b</param>
+        /// <param name="indexPage"></param>
+        /// <param name="sortExpression"></param>
+        /// <param name="sortDirection"></param>
+        /// <param name="errInfo"></param>
+        /// <returns>记录集</returns>
+        public List<<%=SourceTable.Name %>> GetList(int indexPage, int pageCount, string str, string sortExpression, string sortDirection, out string errInfo)
+        {
+           return Get<%=SourceTable.Name %>List(indexPage, pageCount, str, sortExpression, sortDirection, out errInfo);
+        }
+         public List<<%=SourceTable.Name %>> GetList()
+         {
+           return Get<%=SourceTable.Name %>List();
+         }
+         
+         #endregion
+         
+         #region DeleteMethod
+          /// <summary>
+        /// Mk_Downtime_downTimeModel 删除一条记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="errInfo"></param>
+        /// <returns>所影响的行数</returns>
+        public bool DeleteById(int id,out string errInfo)
+        {
+            bool success;
+            if (Delete<%=SourceTable.Name %>(id, out errInfo) > 0 && errInfo == "")
+            {
+                success = true;
+            }
+            else
+            {
+                success = false;
+            }
+            return success;
+        }
+        public bool DeleteByList(int[] idList,out string errInfo)
+        {
+           bool success = false;
+           if (idList != null && idList.Any())
+           {
+               if (Delete<%=SourceTable.Name %>List(idList, out errInfo) > 0 && errInfo == "")
+               {
+                   success = errInfo == "";
+               }
+           }
+           else
+           {
+               errInfo = "数据不能为NULL!";
+           }
+           return success;
+        }
+         #endregion    
+
+	}
+
+}
+
+
+<script runat="template">
+public string GetCSharpVariableType(ColumnSchema column)
+{
+    if (column.Name.EndsWith("TypeCode")) return column.Name;
+    switch (column.DataType)
+    {
+        case DbType.AnsiString: return "string";
+        case DbType.AnsiStringFixedLength: return "string";
+        case DbType.Binary: return "byte[]";
+        case DbType.Boolean: return "bool";
+        case DbType.Byte: return "byte";
+        case DbType.Currency: return "decimal";
+        case DbType.Date: return "DateTime";
+        case DbType.DateTime: return "DateTime";
+        case DbType.Decimal: return "decimal";
+        case DbType.Double: return "double";
+        case DbType.Guid: return "Guid";
+        case DbType.Int16: return "short";
+        case DbType.Int32: return "int";
+        case DbType.Int64: return "long";
+        case DbType.Object: return "object";
+        case DbType.SByte: return "sbyte";
+        case DbType.Single: return "float";
+        case DbType.String: return "string";
+        case DbType.StringFixedLength: return "string";
+        case DbType.Time: return "TimeSpan";
+        case DbType.UInt16: return "ushort";
+        case DbType.UInt32: return "uint";
+        case DbType.UInt64: return "ulong";
+        case DbType.VarNumeric: return "decimal";
+        default:
+        {
+            return "__UNKNOWN__" + column.NativeType;
+        }
+    }
+}
+
+</script>

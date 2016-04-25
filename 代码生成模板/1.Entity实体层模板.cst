@@ -1,0 +1,90 @@
+﻿<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="C#" Src="" Inherits="CodeSmith.BaseTemplates.SqlCodeTemplate" Debug="False" Description="从数据库 生成实体。" %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Property Name="ProjectName" Type="System.String"  Category="0.Init"  Optional="True" Default="GS" Description="项目名称，用于生成命名空间，如：输入WebDG后，对应的Model的命名空间为（WebDG.Model.Entity），DAL层的命名空间为（WebDG.DAL），BLL层的命名空间为（WebDG.BLL）"   %>
+
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="1.Context" 
+Description="Table that the stored procedures should be based on.---" %>
+//-----------------------------------------------------------------
+//-- Date Created: <%= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") %>
+//-- Created By:   Yuri
+//-- Copyright © www.ef-automation.com 2015. All right reserved.
+//-----------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace III.<%=ProjectName%>.Entity
+{
+    /// <summary>
+    /// <%=SourceTable.Name %>
+    /// </summary>
+    [Serializable]
+	public partial class <%=SourceTable.Name %>
+	{
+	    <%for(int i=0;i<SourceTable.Columns.Count;i++) {%>
+		private <%=GetCSharpVariableType(SourceTable.Columns[i])%> <%=SourceTable.Columns[i].Name.Substring(0,1).ToLower() %><%=SourceTable.Columns[i].Name.Substring(1) %>;
+		<% } %>
+		
+		<%for(int i=0;i<SourceTable.Columns.Count;i++) { ColumnSchema column=SourceTable.Columns[i]; %>
+		
+	    /// <summary>
+        /// <%=column.Name %> 
+        /// (<%=column.FullName %> <%=column.NativeType %>(<%=column.Size %>) <%=column.AllowDBNull?"NULL":"NOT NULL" %> )
+        /// <%=column.Description %>
+        /// </summary>
+		public <%=GetCSharpVariableType(column)%> <%=column.Name.Substring(0,1).ToUpper() %><%=column.Name.Substring(1) %> 
+		{ 
+			get{ return this.<%=SourceTable.Columns[i].Name.Substring(0,1).ToLower() %><%=column.Name.Substring(1) %>;}
+			set{ this.<%=column.Name.Substring(0,1).ToLower() %><%=column.Name.Substring(1) %>=value;}
+		}
+		<% } %>
+
+	}
+
+}
+
+<script runat="template">
+public string GetCSharpVariableType(ColumnSchema column)
+{
+    if (column.Name.EndsWith("TypeCode")) return column.Name;
+    switch (column.DataType)
+    {
+        case DbType.AnsiString: return "string";
+        case DbType.AnsiStringFixedLength: return "string";
+        case DbType.Binary: return "byte[]";
+        case DbType.Boolean: return "bool";
+        case DbType.Byte: return "byte";
+        case DbType.Currency: return "decimal";
+        case DbType.Date: return "DateTime";
+        case DbType.DateTime: return "DateTime";
+        case DbType.Decimal: return "decimal";
+        case DbType.Double: return "double";
+        case DbType.Guid: return "Guid";
+        case DbType.Int16: return "short";
+        case DbType.Int32: return "int";
+        case DbType.Int64: return "long";
+        case DbType.Object: return "object";
+        case DbType.SByte: return "sbyte";
+        case DbType.Single: return "float";
+        case DbType.String: return "string";
+        case DbType.StringFixedLength: return "string";
+        case DbType.Time: return "TimeSpan";
+        case DbType.UInt16: return "ushort";
+        case DbType.UInt32: return "uint";
+        case DbType.UInt64: return "ulong";
+        case DbType.VarNumeric: return "decimal";
+        default:
+        {
+            return "__UNKNOWN__" + column.NativeType;
+        }
+    }
+}
+
+</script>

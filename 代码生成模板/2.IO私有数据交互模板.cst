@@ -1,0 +1,511 @@
+﻿<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="C#" Src="" Inherits="CodeSmith.BaseTemplates.SqlCodeTemplate" Debug="False" Description="从数据库 生成实体。" %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Name="SchemaExplorer" %>  
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Property Name="ProjectName" Type="System.String"  Category="0.Init"  Optional="True" Default="GS" Description="项目名称，用于生成命名空间，如：输入WebDG后，对应的Model的命名空间为（WebDG.Model.Entity），DAL层的命名空间为（WebDG.DAL），BLL层的命名空间为（WebDG.BLL）"   %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="1.Context" 
+Description="Table that the stored procedures should be based on.---" %>
+
+
+<script runat="template">
+public string GetTbColumbs(){  //Insert sql 语句
+    List<string> columns =new List<string>();    
+    foreach (var column in SourceTable.Columns) {         
+        columns.Add(column.Name);        
+    }  
+    return string.Join(" ",columns);
+}
+</script>
+<script runat="template">
+public string GetSInsertSql(){  //Insert sql 语句
+    List<string> columns =new List<string>();
+    List<string> paramslst =new List<string>();
+    foreach (var column in SourceTable.Columns) {         
+        columns.Add(column.Name);
+        paramslst.Add("@"+column.Name);
+    }   
+    columns.Remove("I_id");
+    paramslst.Remove("@I_id");
+    return "INSERT INTO "+SourceTable.Name+" (" +string.Join(",",columns) +") VALUES ("+string.Join(",",paramslst) +");SELECT SCOPE_IDENTITY()";
+}
+</script>
+<script runat="template">
+public string GetSInsertParameter(){  //Insert sql Parameter 语句   
+    string strResult="IDataParameter[] parms = {\r\n\t\t       ";
+    List<string> sqlstr =new List<string>();
+    foreach (var column in SourceTable.Columns) {    
+        int i= column.Name.IndexOf("_");
+        
+        sqlstr.Add("new SqlParameter(\"@"+column.Name+"\",model."+column.Name.Substring(0,1).ToUpper()+column.Name.Substring(1)+")");
+    }   
+    sqlstr.RemoveAt(0);
+    strResult+=string.Join(",\r\n\t\t       ",sqlstr)+"\r\n\t\t       };";
+    return strResult;
+                     
+}
+</script>
+<script runat="template">
+public string GetUpdateSql(){  //Insert sql 语句
+    List<string> sqlstr =new List<string>();
+    List<string> pkeys =new List<string>();
+    foreach (var column in SourceTable.Columns) { 
+        if(column.IsPrimaryKeyMember){
+             pkeys.Add(column.Name+"=@"+column.Name);
+        }
+        else{
+        sqlstr.Add(column.Name+"=@"+column.Name);
+        }
+    } 
+    return "UPDATE "+SourceTable.Name+" SET " +string.Join(",",sqlstr) +" WHERE "+string.Join(" and ",pkeys);
+}
+</script>
+<script runat="template">
+public string GetUpdateParameter(){  //Insert sql Parameter 语句
+    string strResult="IDataParameter[] parms = {\r\n\t\t       ";
+    List<string> sqlstr =new List<string>();
+    foreach (var column in SourceTable.Columns) {    
+        int i= column.Name.IndexOf("_");
+        sqlstr.Add("new SqlParameter(\"@"+column.Name+"\",model."+column.Name.Substring(0,1).ToUpper()+column.Name.Substring(1)+")");
+    }   
+    strResult+=string.Join(",\r\n\t\t       ",sqlstr)+"\r\n\t\t       };";
+    return strResult;
+                     
+}
+</script>
+<script runat="template">
+public string TypeConvert(string dbType){
+    string valueType="";
+     if(dbType=="int"){
+            valueType="Convert.ToInt32(";
+        }
+      if(dbType=="nvarchar"){
+            valueType="Convert.ToString(";
+        }
+      if(dbType=="nchar"){
+            valueType="Convert.ToString(";
+        }
+      if(dbType=="ntext"){
+            valueType="Convert.ToString(";
+        }
+      if(dbType=="date"){
+            valueType="Convert.ToDateTime(";
+        }
+       if(dbType=="bit"){
+            valueType="Convert.ToBoolean(";
+        }
+        if(dbType=="float"){
+            valueType="Convert.ToSingle(";
+        }
+        return valueType;
+}
+</script>
+
+
+//-----------------------------------------------------------------
+//-- Date Created: <%= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") %>
+//-- Created By:   Yuri
+//-- Copyright © www.ef-automation.com 2015. All right reserved.
+//-----------------------------------------------------------------
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using III.Common;
+using YZH.DAO;
+using III.<%=ProjectName%>.Entity;
+
+namespace III.<%=ProjectName%>.IO
+{
+    /// <summary>
+    /// <%=SourceTable.Name %>
+    /// </summary>
+    
+	public partial class <%=SourceTable.Name %>IO:IoBase
+	{
+	    
+       
+       public <%=SourceTable.Name %>IO(string constring):base(constring)
+        {
+            Constring = constring;
+        }
+
+       #region InsertMethod
+          /// <summary>
+          /// <%=SourceTable.Name %>新增一条记录
+          /// </summary>
+          /// <param name="model">实体模型</param>
+          /// <param name="id"></param>
+          /// <param name="errInfo"></param>
+          /// <returns>影响行数</returns>
+          private int Insert<%=SourceTable.Name %>(<%=SourceTable.Name %> model,out int id,out string errInfo)
+          {
+              const string sql ="<%= GetSInsertSql() %>";
+               IDAO db= IDAO.CreateDAO(Constring, DataBaseType.SQLServer);
+               errInfo = "";
+               id = 0;
+               <%= GetSInsertParameter() %>
+               int i;
+               try
+               {
+                    
+                   Hashtable hashtable;
+                   i = Convert.ToInt32(db.ExecuteNonQuery(CommandType.Text, sql,out hashtable,parms));
+               }
+               catch (Exception e)
+               {
+                   i = 0;
+                   errInfo = e.Message;
+                   //LogHelper.WriteLog(typeof(UserInfoIo), e);
+                }
+                finally
+                {
+                    db.CloseConnection();
+                }
+                return i;
+          }
+      #endregion
+        #region UpdateMethod
+        /// <summary>
+        /// <%=SourceTable.Name %>更新一条记录
+        /// </summary>
+        /// <param name="model">实体模型</param>
+        /// <param name="errInfo"></param>
+        /// <returns>影响行数</returns>
+        private int Update<%=SourceTable.Name %>(<%=SourceTable.Name %> model,out string errInfo)
+        {
+            const string sql ="<%=GetUpdateSql()%>";
+            IDAO db = IDAO.CreateDAO(Constring, DataBaseType.SQLServer);
+            errInfo="";
+            <%= GetUpdateParameter() %>
+            int i;
+            try
+            {
+                
+                Hashtable hashtable;
+                i = Convert.ToInt32(db.ExecuteNonQuery(CommandType.Text, sql,out hashtable,parms));
+            }
+            catch (Exception e)
+            {
+                i = 0;
+                errInfo = e.Message;
+                //LogHelper.WriteLog(typeof(UserInfoIo), e);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+            return i;
+
+        }   
+         #endregion         
+        #region GetModelMethod      
+        /// <summary>
+        ///  <%=SourceTable.Name %>获取一条记录
+        /// </summary>
+        /// <param name="id">记录编号</param>
+        /// <param name="errInfo"></param>
+        /// <returns>实体模型</returns>
+        private <%=SourceTable.Name %> Get<%=SourceTable.Name %>Model(object id,out string errInfo)
+        {
+            const string sql = "SELECT * FROM <%= SourceTable.Name%> WHERE I_id=@I_id";
+            IDAO db = IDAO.CreateDAO(Constring, DataBaseType.SQLServer);
+            errInfo = "";
+            IDataParameter[] parms = {
+        				new SqlParameter("@I_id",id)
+            };          
+            IDataReader dr = db.ExecuteDataReader(CommandType.Text, sql, parms);		
+        	<%=SourceTable.Name %> model = null;
+            try
+            {
+                if (dr.Read())
+                {		
+        		   model = LoadModel(dr);
+                }
+            }
+            catch (Exception e)
+            {
+                model = null;
+                errInfo = e.Message;
+                //LogHelper.WriteLog(typeof(UserInfoIo), e);
+            }
+            finally
+            {
+                dr.Close();
+                db.CloseConnection();
+            }
+            return model;
+        }   
+         #endregion
+        #region GetCountMethod           
+         private int Get<%=SourceTable.Name %>Count(int pageCount, string str, out string errInfo)
+        {
+            errInfo = "";
+            IDAO db = IDAO.CreateDAO(Constring, DataBaseType.SQLServer);
+            var sql = new StringBuilder();
+            if (!string.IsNullOrEmpty(str))
+            {
+                str = " AND " + str;
+            }
+            sql.AppendFormat("select  count(*) from <%= SourceTable.Name%> WHERE 1 = 1  {0} ", str);
+            var count = (int) db.ExecuteScalar(CommandType.Text, sql.ToString());
+            var k = 0;
+            while (k * pageCount<=count)
+            {
+                k++;
+            }
+
+            db.CloseConnection();
+            
+            return k;
+        }
+          #endregion
+         #region GetListMethod
+        /// <summary>
+        ///  <%=SourceTable.Name %>获取所有记录
+        /// </summary>
+        /// <param name="pageCount"></param>
+        /// <param name="str">查询条件，如：A = 'a' and B = b</param>
+        /// <param name="indexPage"></param>
+        /// <param name="sortExpression"></param>
+        /// <param name="sortDirection"></param>
+        /// <param name="errInfo"></param>
+        /// <returns>记录集</returns>
+        private List<<%=SourceTable.Name %>> Get<%=SourceTable.Name %>List(int indexPage, int pageCount, string str, string sortExpression, string sortDirection, out string errInfo)
+        {
+            errInfo="";
+            IDAO db = IDAO.CreateDAO(Constring, DataBaseType.SQLServer);
+            var list = new List<<%=SourceTable.Name %>>();
+            var sql = new StringBuilder();
+        	if (!string.IsNullOrEmpty(str))
+            {
+                str = " AND " + str;
+            }
+            if (!string.IsNullOrEmpty(sortExpression))
+            {
+                if (indexPage == 0 && pageCount == 0)
+                {
+                    sql.AppendFormat("select  <%= GetTbColumbs()%> from  <%=SourceTable.Name %> WHERE 1 = 1  {2} ORDER BY {0} {1}", sortExpression, sortDirection, str);
+                }
+                else
+                {
+                    sql.AppendFormat("SELECT TOP {0}", pageCount);
+                    sql.Append(" <%= GetTbColumbs()%> from  <%=SourceTable.Name %> WHERE ");
+                    sql.AppendFormat(" (I_id NOT IN  (SELECT TOP {0} I_id FROM  <%=SourceTable.Name %>  WHERE  1=1 {3} ORDER BY {1} {2}))  {3} ORDER BY {1} {2}", pageCount * (indexPage - 1), sortExpression, sortDirection, str);
+                }
+            }
+            else
+            {
+                if (indexPage == 0 && pageCount == 0)
+                {
+                    sql.AppendFormat("select  <%= GetTbColumbs()%> from  <%=SourceTable.Name %> WHERE 1 = 1  {0} ",  str);
+                }
+                else
+                {
+                    sql.AppendFormat("SELECT TOP {0}", pageCount);
+                    sql.Append(" <%= GetTbColumbs()%> from  <%=SourceTable.Name %> WHERE ");
+                    sql.AppendFormat(" (I_id NOT IN  (SELECT TOP {0} I_id FROM  <%=SourceTable.Name %>  WHERE  1=1 {1} ))  {1}", pageCount * (indexPage - 1), str);
+                }
+            }
+          
+            IDataReader dr = db.ExecuteDataReader(CommandType.Text, sql.ToString());
+            while (dr.Read())
+            {
+                <%=SourceTable.Name %> model = new <%=SourceTable.Name %>();
+            <%foreach (var column in SourceTable.Columns) %>
+			<%{	 
+            int i= column.Name.IndexOf("_");
+            %>
+                if(dr["<%=column.Name%>"] != DBNull.Value){
+    			      model.<%=column.Name.Substring(0,1).ToUpper() %><%=column.Name.Substring(1) %>=<%=TypeConvert(column.NativeType.ToLowerInvariant())%>dr["<%=column.Name%>"]);		    			
+                      }
+			<%}
+			%>  
+                list.Add(model);
+            }
+            dr.Close();
+            db.CloseConnection();            
+            return list;
+        }
+         private List<<%=SourceTable.Name %>> Get<%=SourceTable.Name %>List()
+         {
+            const string sql = "Select * FROM  <%=SourceTable.Name %>";
+            IDAO db = IDAO.CreateDAO(Constring, DataBaseType.SQLServer);
+            string errInfo = "";
+            var list = new List<<%=SourceTable.Name %>>();
+            IDataReader dr = db.ExecuteDataReader(CommandType.Text, sql);
+            while (dr.Read())
+            {
+                <%=SourceTable.Name %> model = new <%=SourceTable.Name %>();
+            <%foreach (var column in SourceTable.Columns) %>
+			<%{	 
+            int i= column.Name.IndexOf("_");
+            %>
+                if(dr["<%=column.Name%>"] != DBNull.Value){
+    			      model.<%=column.Name.Substring(0,1).ToUpper() %><%=column.Name.Substring(1) %>=<%=TypeConvert(column.NativeType.ToLowerInvariant())%>dr["<%=column.Name%>"]);		    			
+                      }
+			<%}
+			%>  
+                list.Add(model);
+            }
+            dr.Close();
+            db.CloseConnection();            
+            return list;
+         }
+         #endregion
+         
+         #region DeleteMethod
+          /// <summary>
+        /// <%=SourceTable.Name %> 删除一条记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="errInfo"></param>
+        /// <returns>所影响的行数</returns>
+        private int Delete<%=SourceTable.Name %>(int id,out string errInfo)
+        {
+             const string sql = "DELETE FROM  <%=SourceTable.Name %> WHERE I_id=@I_id";
+             IDAO db = IDAO.CreateDAO(Constring, DataBaseType.SQLServer);
+            errInfo = "";
+            IDataParameter[] parms = {
+        				new SqlParameter("@I_id", id)
+            };
+            int i;
+            try
+            {
+                Hashtable hashtable;
+                i = Convert.ToInt32(db.ExecuteNonQuery(CommandType.Text, sql, out hashtable,parms));
+            }
+            catch (Exception e)
+            {
+                i = 0;
+                errInfo = e.Message;
+                //LogHelper.WriteLog(typeof(UserInfoIo), e);
+            }
+            return i;
+
+        }
+         /// <summary>
+        /// <%=SourceTable.Name %> 删除一条记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="errInfo"></param>
+        /// <returns>所影响的行数</returns>
+        private int Delete<%=SourceTable.Name %>List(int[] idList,out string errInfo)
+        {
+            IDAO db = IDAO.CreateDAO(Constring, DataBaseType.SQLServer);
+            errInfo = "";
+            int i = 0;
+            string str = "(";
+            for (int j = 0; j < idList.Length; j++)
+            {
+                if (j != idList.Length - 1)
+                {
+                    str += idList[j] + ",";
+                }
+                else
+                {
+                    str += idList[j];
+                }
+
+            }
+            str += ")";
+            db.BeginTrans();
+            try
+            {
+                string sql = "DELETE FROM <%= SourceTable.Name %> WHERE I_id in " + str;
+                i += Convert.ToInt32(db.ExecuteNonQuery(CommandType.Text, sql));
+                db.CommitTrans();
+            }
+            catch (Exception e)
+            {
+                db.RollBackTrans();
+                i = 0;
+                errInfo = e.Message;
+                //LogHelper.WriteLog(typeof(UserInfoIo), e);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+            return i;
+        }
+         #endregion
+         #region LoadModel
+         /// <summary>
+        /// <%=SourceTable.Name %>装载实体
+        /// </summary>
+        /// <param name="dr">记录集</param>
+        /// <returns>返回对象</returns>
+        private <%=SourceTable.Name %> LoadModel(IDataReader dr)
+        {
+        	<%=SourceTable.Name %> model = new <%=SourceTable.Name %>();
+            <%foreach (var column in SourceTable.Columns) %>
+			<%{	 
+            int i= column.Name.IndexOf("_");
+            %>
+                if(dr["<%=column.Name%>"] != DBNull.Value){
+    			      model.<%=column.Name.Substring(0,1).ToUpper() %><%=column.Name.Substring(1) %>=<%=TypeConvert(column.NativeType.ToLowerInvariant())%>dr["<%=column.Name%>"]);		    			
+                      }
+			<%}
+			%> 
+            return model;
+        }
+    	#endregion 
+
+	}
+
+}
+
+
+<script runat="template">
+public string GetCSharpVariableType(ColumnSchema column)
+{
+    if (column.Name.EndsWith("TypeCode")) return column.Name;
+    switch (column.DataType)
+    {
+        case DbType.AnsiString: return "string";
+        case DbType.AnsiStringFixedLength: return "string";
+        case DbType.Binary: return "byte[]";
+        case DbType.Boolean: return "bool";
+        case DbType.Byte: return "byte";
+        case DbType.Currency: return "decimal";
+        case DbType.Date: return "DateTime";
+        case DbType.DateTime: return "DateTime";
+        case DbType.Decimal: return "decimal";
+        case DbType.Double: return "double";
+        case DbType.Guid: return "Guid";
+        case DbType.Int16: return "short";
+        case DbType.Int32: return "int";
+        case DbType.Int64: return "long";
+        case DbType.Object: return "object";
+        case DbType.SByte: return "sbyte";
+        case DbType.Single: return "float";
+        case DbType.String: return "string";
+        case DbType.StringFixedLength: return "string";
+        case DbType.Time: return "TimeSpan";
+        case DbType.UInt16: return "ushort";
+        case DbType.UInt32: return "uint";
+        case DbType.UInt64: return "ulong";
+        case DbType.VarNumeric: return "decimal";
+        default:
+        {
+            return "__UNKNOWN__" + column.NativeType;
+        }
+    }
+}
+
+</script>

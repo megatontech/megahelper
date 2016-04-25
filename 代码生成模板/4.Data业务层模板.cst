@@ -1,0 +1,166 @@
+﻿<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="C#" Src="" Inherits="CodeSmith.BaseTemplates.SqlCodeTemplate" Debug="False" Description="从数据库 生成实体。" %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Property Name="ProjectName" Type="System.String"  Category="0.Init"  Optional="True" Default="GS" Description="项目名称，用于生成命名空间，如：输入WebDG后，对应的Model的命名空间为（WebDG.Model.Entity），DAL层的命名空间为（WebDG.DAL），BLL层的命名空间为（WebDG.BLL）"   %>
+
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="1.Context" 
+Description="Table that the stored procedures should be based on.---" %>
+//-----------------------------------------------------------------
+//-- Date Created: <%= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") %>
+//-- Created By:   Yuri
+//-- Copyright © www.ef-automation.com 2015. All right reserved.
+//-----------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using III.Common;
+using III.Common.PTEnum;
+using III.<%=ProjectName%>.IO;
+using III.<%=ProjectName%>.Entity;
+
+namespace III.<%=ProjectName%>.Data
+{
+    /// <summary>
+    /// <%=SourceTable.Name %>
+    /// </summary>
+    
+	public class <%=SourceTable.Name %>Manager
+	{
+	    
+        #region Insert
+         /// <summary>
+        /// Insert   
+        /// </summary>
+        /// <returns></returns>
+        public bool Insert(<%=SourceTable.Name %> model)
+        {
+            string conString = ConStringEngine.GetConString(ConStringEnum.WriteConString);
+             string err;           
+            int id;
+            bool success = new <%=SourceTable.Name %>IO(conString).Insert(model, out id, out err);           
+            return success;
+        }
+        #endregion
+        #region Update
+        /// <summary>
+        /// Update  
+        /// </summary>
+        /// <returns></returns>
+        public bool Update(<%=SourceTable.Name %> model)
+        {  
+            string conString = ConStringEngine.GetConString(ConStringEnum.WriteConString);
+            string err;
+            bool success = new <%=SourceTable.Name %>IO(conString).Update(model, out err);           
+            return success;
+        }
+         #endregion
+        #region Delete      
+        /// <summary>
+        /// DeleteById  
+        /// </summary>
+        /// <returns></returns>
+        public bool DeleteById(int id)
+        {           
+            string conString = ConStringEngine.GetConString(ConStringEnum.WriteConString);
+            string err;
+            bool success =  new <%=SourceTable.Name %>IO(conString).DeleteById(id, out err);           
+            return success;
+        }
+        /// <summary>
+        /// DeleteByList  
+        /// </summary>
+        /// <returns></returns>
+        public bool DeleteByIdList(int[] idList)
+        {           
+            string conString = ConStringEngine.GetConString(ConStringEnum.WriteConString);
+            string err;
+            bool success =  new <%=SourceTable.Name %>IO(conString).DeleteByList(idList, out err);           
+            return success;
+        }
+        #endregion
+        #region Select
+        ///<summary>
+        ///GetList()无其他参数，直接读取数据库中所有数据
+        ///</summary>
+        public List<<%=SourceTable.Name %>> GetList()
+        {
+             string conString = ConStringEngine.GetConString(ConStringEnum.WriteConString);
+            return new <%=SourceTable.Name %>IO(conString).GetList();
+        }
+        ///<summary>
+        ///GetPageList()
+        ///<param name="indexPage">第几页</param>
+        ///<param name="pageCount">共几页</param>
+        ///<param name="str">查询条件，如：A = 'a' and B = b</param>
+        ///<param name="sortExpression">排序表达式</param>
+        ///<param name="sortDirection">排序方向</param>
+        ///<param name="err">错误信息</param>
+        ///</summary>
+        public List<<%=SourceTable.Name %>> GetPageList(int indexPage, int pageCount, string str, string sortExpression, string sortDirection, out string err)
+        {   
+            err="";
+            string conString = ConStringEngine.GetConString(ConStringEnum.WriteConString);
+            return new <%=SourceTable.Name %>IO(conString).GetList(indexPage,pageCount,str,sortExpression,sortDirection,out err);
+        }
+        ///<summary>
+        ///根据id查询
+        ///</summary>
+         public <%=SourceTable.Name %> GetById(int id)
+        {    
+           string error;
+           string conString = ConStringEngine.GetConString(ConStringEnum.WriteConString);
+           return new <%=SourceTable.Name %>IO(conString).GetModel(id, out error);           
+        }
+        
+        #endregion
+
+
+	}
+
+}
+
+
+<script runat="template">
+public string GetCSharpVariableType(ColumnSchema column)
+{
+    if (column.Name.EndsWith("TypeCode")) return column.Name;
+    switch (column.DataType)
+    {
+        case DbType.AnsiString: return "string";
+        case DbType.AnsiStringFixedLength: return "string";
+        case DbType.Binary: return "byte[]";
+        case DbType.Boolean: return "bool";
+        case DbType.Byte: return "byte";
+        case DbType.Currency: return "decimal";
+        case DbType.Date: return "DateTime";
+        case DbType.DateTime: return "DateTime";
+        case DbType.Decimal: return "decimal";
+        case DbType.Double: return "double";
+        case DbType.Guid: return "Guid";
+        case DbType.Int16: return "short";
+        case DbType.Int32: return "int";
+        case DbType.Int64: return "long";
+        case DbType.Object: return "object";
+        case DbType.SByte: return "sbyte";
+        case DbType.Single: return "float";
+        case DbType.String: return "string";
+        case DbType.StringFixedLength: return "string";
+        case DbType.Time: return "TimeSpan";
+        case DbType.UInt16: return "ushort";
+        case DbType.UInt32: return "uint";
+        case DbType.UInt64: return "ulong";
+        case DbType.VarNumeric: return "decimal";
+        default:
+        {
+            return "__UNKNOWN__" + column.NativeType;
+        }
+    }
+}
+
+</script>

@@ -1,0 +1,60 @@
+
+组件说明：
+
+
+BuilderBLLComm    基于标准的业务逻辑层代码（BLL）
+
+
+BuilderDALParam		数据访问层（DAL）基于Parameter方式的代码生成组件(推荐)
+
+BuilderDALProc		数据访问层（DAL）基于存储过程方式的代码生成组件
+
+BuilderDALSQL		数据访问层（DAL）基于SQL拼接方式的代码生成组件
+
+BuilderDALTranParam 	数据访问层（DAL）带有事务的代码生成组件
+
+	DAL由于不同项目要求不同，根据项目需求，选择其中一种方式即可。
+
+
+
+BuilderModel	Model层的代码生成组件
+
+
+BuilderWeb	表示层的代码生成组件
+
+
+
+
+==============================================================================
+
+接口开发说明：
+
+添加4个dll的引用：
+LTP.CodeHelper.dll
+LTP.IBuilder.dll
+LTP.IDBO.dll
+LTP.Utility.dll
+
+并在类中：
+using LTP.Utility;
+using LTP.IDBO;
+using LTP.CodeHelper;
+
+
+二． 继承
+DAL数据访问层模板组件：public class BuilderDAL : LTP.IBuilder.IBuilderDAL
+BLL业务逻辑层模板组件：public class BuilderBLL : LTP.IBuilder.IBuilderBLL
+Web表示层模板组件：public class BuilderWeb : IBuilder.IBuilderWeb
+
+
+
+项目编译后，生成的Dll，直接复制到安装目录下覆盖原文件即可。
+
+也可以通过动软.NET代码生成器：工具-选项-组件管理 进行管理。
+
+(注意：请不要放在桌面上进行编译，由于桌面的路径特殊带有空格，可能造成文件复制错误。)
+
+
+更多帮助，请查看： http://help.maticsoft.com
+
+

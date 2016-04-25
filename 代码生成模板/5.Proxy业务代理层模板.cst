@@ -1,0 +1,153 @@
+﻿<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="C#" Src="" Inherits="CodeSmith.BaseTemplates.SqlCodeTemplate" Debug="False" Description="从数据库 生成实体。" %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Property Name="ProjectName" Type="System.String"  Category="0.Init"  Optional="True" Default="GS" Description="项目名称，用于生成命名空间，如：输入WebDG后，对应的Model的命名空间为（WebDG.Model.Entity），DAL层的命名空间为（WebDG.DAL），BLL层的命名空间为（WebDG.BLL）"   %>
+
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="1.Context" 
+Description="Table that the stored procedures should be based on.---" %>
+//-----------------------------------------------------------------
+//-- Date Created: <%= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") %>
+//-- Created By:   Yuri
+//-- Copyright © www.ef-automation.com 2015. All right reserved.
+//-----------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using III.Common;
+using III.Common.PTEnum;
+using III.<%=ProjectName%>.IO;
+using III.<%=ProjectName%>.Entity;
+
+namespace III.<%=ProjectName%>.Data.Proxy
+{
+    /// <summary>
+    /// <%=SourceTable.Name %>
+    /// </summary>
+    
+	public class <%=SourceTable.Name %>ManagerProxy
+	{
+	    
+        private readonly  <%=SourceTable.Name %>Manager _<%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>;
+        public   <%=SourceTable.Name %>ManagerProxy( <%=SourceTable.Name %>Manager <%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>)
+        {
+            _<%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %> = <%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>;
+        }
+        
+        #region  <%=SourceTable.Name %>ManagerProxyInsert
+         /// <summary>
+        /// Insert   
+        /// </summary>
+        /// <returns></returns>
+        public bool Insert(<%=SourceTable.Name %> model)
+        {
+            return _<%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>.Insert(model);
+        }
+        #endregion
+        #region  <%=SourceTable.Name %>ManagerProxyUpdate
+        /// <summary>
+        ///  <%=SourceTable.Name %>ManagerProxyUpdate  
+        /// </summary>
+        /// <returns></returns>
+        public bool Update(<%=SourceTable.Name %> model)
+        {  
+            return _<%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>.Update(model);
+        }
+         #endregion
+        #region Delete      
+        /// <summary>
+        ///  <%=SourceTable.Name %>ManagerProxyDeleteById  
+        /// </summary>
+        /// <returns></returns>
+        public bool DeleteById(int id)
+        {           
+           return _<%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>.DeleteById(id);
+        }
+        /// <summary>
+        ///  <%=SourceTable.Name %>ManagerProxyDeleteByList  
+        /// </summary>
+        /// <returns></returns>
+        public bool DeleteByIdList(int[] idList)
+        {           
+           return _<%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>.DeleteByIdList(idList);
+        }
+        #endregion
+        #region GetData
+        ///<summary>
+        ///GetList()无其他参数，直接读取数据库中所有数据
+        ///</summary>
+        public List<<%=SourceTable.Name %>> GetList()
+        {
+            return _<%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>.GetList();
+        }
+        
+        ///<summary>
+        ///GetPageList()
+        ///<param name="indexPage">第几页</param>
+        ///<param name="pageCount">共几页</param>
+        ///<param name="str">查询条件，如：A = 'a' and B = b</param>
+        ///<param name="sortExpression">排序表达式</param>
+        ///<param name="sortDirection">排序方向</param>
+        ///<param name="errInfo">错误信息</param>
+        ///</summary>
+        public List<<%=SourceTable.Name %>> GetPageList(int indexPage, int pageCount, string str, string sortExpression, string sortDirection, out string errInfo)
+        {   
+             return _<%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>.GetPageList(indexPage, pageCount, str, sortExpression, sortDirection, out errInfo);
+        }
+        
+         public <%=SourceTable.Name %> GetInfoById(int id)
+        {            
+           return _<%=SourceTable.Name.Substring(0,1).ToLower() %><%=SourceTable.Name.Substring(1) %>.GetById(id);
+        }
+        
+        #endregion
+
+
+	}
+
+}
+
+
+<script runat="template">
+public string GetCSharpVariableType(ColumnSchema column)
+{
+    if (column.Name.EndsWith("TypeCode")) return column.Name;
+    switch (column.DataType)
+    {
+        case DbType.AnsiString: return "string";
+        case DbType.AnsiStringFixedLength: return "string";
+        case DbType.Binary: return "byte[]";
+        case DbType.Boolean: return "bool";
+        case DbType.Byte: return "byte";
+        case DbType.Currency: return "decimal";
+        case DbType.Date: return "DateTime";
+        case DbType.DateTime: return "DateTime";
+        case DbType.Decimal: return "decimal";
+        case DbType.Double: return "double";
+        case DbType.Guid: return "Guid";
+        case DbType.Int16: return "short";
+        case DbType.Int32: return "int";
+        case DbType.Int64: return "long";
+        case DbType.Object: return "object";
+        case DbType.SByte: return "sbyte";
+        case DbType.Single: return "float";
+        case DbType.String: return "string";
+        case DbType.StringFixedLength: return "string";
+        case DbType.Time: return "TimeSpan";
+        case DbType.UInt16: return "ushort";
+        case DbType.UInt32: return "uint";
+        case DbType.UInt64: return "ulong";
+        case DbType.VarNumeric: return "decimal";
+        default:
+        {
+            return "__UNKNOWN__" + column.NativeType;
+        }
+    }
+}
+
+</script>
