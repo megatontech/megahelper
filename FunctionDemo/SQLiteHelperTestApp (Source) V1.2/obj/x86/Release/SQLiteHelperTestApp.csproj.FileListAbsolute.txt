@@ -1,0 +1,79 @@
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\bin\x86\Release\SQLiteHelperTestApp.exe
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\bin\x86\Release\SQLiteHelperTestApp.pdb
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\bin\x86\Release\System.Data.SQLite.dll
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.GetTableStatus.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.MainMenu.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Properties.Resources.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.csproj.GenerateResource.Cache
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.exe
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.pdb
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.GetTableList.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.GetColumnStatus.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Select.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Execute.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.ExecuteScalar.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Insert.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Update.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Transaction.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.LastInsertRowId.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.RenameTable.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.DropTable.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.CopyAllDataBetweenTables.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.Column.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.CreateTable.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.UpdateTableStructure.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.ShowDatabase.resources
+D:\projects\22 - SQLite Helper\project1\SQLiteHelperTestApp\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.AttachDatabase.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.exe
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.pdb
+D:\projects\22 - SQLite Helper\project1\bin\x86\Release\SQLiteHelperTestApp.exe
+D:\projects\22 - SQLite Helper\project1\bin\x86\Release\SQLiteHelperTestApp.pdb
+D:\projects\22 - SQLite Helper\project1\bin\x86\Release\System.Data.SQLite.dll
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.GetColumnStatus.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.GetTableList.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.GetTableStatus.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.ShowDatabase.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Execute.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.ExecuteScalar.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Insert.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.LastInsertRowId.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Select.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Transaction.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Update.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.AttachDatabase.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.Column.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.CopyAllDataBetweenTables.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.CreateTable.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.DropTable.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.RenameTable.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.UpdateTableStructure.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.MainMenu.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.Properties.Resources.resources
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.csproj.GenerateResource.Cache
+D:\projects\22 - SQLite Helper\project1\obj\x86\Release\SQLiteHelperTestApp.csprojResolveAssemblyReference.cache
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.exe
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.pdb
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\bin\x86\Release\SQLiteHelperTestApp.exe
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\bin\x86\Release\SQLiteHelperTestApp.pdb
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.csprojResolveAssemblyReference.cache
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.GetColumnStatus.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.GetTableList.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.GetTableStatus.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.DBInfo.ShowDatabase.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Execute.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.ExecuteScalar.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Insert.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.LastInsertRowId.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Select.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Transaction.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Query.Update.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.AttachDatabase.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.Column.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.CopyAllDataBetweenTables.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.CreateTable.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.DropTable.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.RenameTable.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Forms.Utilities.UpdateTableStructure.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.MainMenu.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.Properties.Resources.resources
+C:\Users\techm\Downloads\SQLiteHelperTestApp (Source) V1.2\obj\x86\Release\SQLiteHelperTestApp.csproj.GenerateResource.Cache

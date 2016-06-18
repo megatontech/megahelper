@@ -1,5 +1,0 @@
-C:\Users\megat\OneDrive\megahelper\BaseUtils\UnitTestProject\bin\Debug\UnitTestProject.dll
-C:\Users\megat\OneDrive\megahelper\BaseUtils\UnitTestProject\bin\Debug\UnitTestProject.pdb
-C:\Users\megat\OneDrive\megahelper\BaseUtils\UnitTestProject\obj\Debug\UnitTestProject.csprojResolveAssemblyReference.cache
-C:\Users\megat\OneDrive\megahelper\BaseUtils\UnitTestProject\obj\Debug\UnitTestProject.dll
-C:\Users\megat\OneDrive\megahelper\BaseUtils\UnitTestProject\obj\Debug\UnitTestProject.pdb

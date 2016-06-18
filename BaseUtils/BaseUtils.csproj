@@ -171,7 +171,6 @@
     <Compile Include="Text\DecodeHelper.cs" />
     <Compile Include="File\DownloadHelper.cs" />
     <Compile Include="Text\EncodeHelper.cs" />
-    <Compile Include="Office\ExcelHelper.cs" />
     <Compile Include="File\FileHelper.cs" />
     <Compile Include="Net\IPHelper.cs" />
     <Compile Include="Text\JSONHelper.cs" />
@@ -181,8 +180,6 @@
     <Compile Include="Media\MediaHelper.cs" />
     <Compile Include="Net\NetWorkHelper.cs" />
     <Compile Include="Text\NumberHelper.cs" />
-    <Compile Include="Office\PDFHelper.cs" />
-    <Compile Include="Office\PrintHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Text\RandomHelper.cs" />
     <Compile Include="Text\RegExHelper.cs" />
@@ -190,7 +187,6 @@
     <Compile Include="ThreadHelper.cs" />
     <Compile Include="File\UploadHelper.cs" />
     <Compile Include="Net\WebPageHelper.cs" />
-    <Compile Include="Office\WordHelper.cs" />
     <Compile Include="Text\XMLHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -295,7 +291,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="BaseUtils.v12.suo" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,0 @@
-C:\Users\Admin\OneDrive\megahelper\BaseUtils\UnitTestProject\bin\Release\UnitTestProject.dll
-C:\Users\Admin\OneDrive\megahelper\BaseUtils\UnitTestProject\bin\Release\UnitTestProject.pdb
-C:\Users\Admin\OneDrive\megahelper\BaseUtils\UnitTestProject\obj\Release\UnitTestProject.dll
-C:\Users\Admin\OneDrive\megahelper\BaseUtils\UnitTestProject\obj\Release\UnitTestProject.pdb
