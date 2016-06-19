@@ -1,4 +1,4 @@
-##当前构建状态
+##构建状态
 [![Build Status](https://travis-ci.org/megatontech/megahelper.svg?branch=master)](https://travis-ci.org/megatontech/megahelper)
 # megahelper
 ####一些个帮助类，有自己写的也有从网上抄的，基本上覆盖了.net开发中常见的helper类，调用起来很方便啦。
